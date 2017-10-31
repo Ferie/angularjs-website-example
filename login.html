@@ -1,0 +1,18 @@
+<section class="loginContainer">
+    <div class="formField">
+        Email: <input type="text" ng-model="vm.email">
+    </div>
+    <div class="formField">
+        Passsword: <input type="password" ng-model="vm.password">
+    </div>
+    <button class="button loginButton" type="submit" ng-click="vm.login()">Submit</button>
+</section>
+
+<div class="spinner" ng-show="vm.loading">
+    Loading...
+</div>
+
+<!--<div ui-view="authenticationError"></div>-->
+<div ng-show="vm.authenticationError">
+    Authentication Error!
+</div>

@@ -1,0 +1,65 @@
+body {
+    font-family: Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo,
+.loginSection {
+    display: inline-block;
+    width: 49.5%;
+}
+
+.loginSection {
+    text-align: right;
+}
+
+.sidebar,
+.container {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sidebar {
+    cursor: pointer;
+    width: 29.5%;
+}
+
+.container {
+    width: 69.5%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar .active {
+    cursor: default;
+    font-weight: bold;
+}
+
+.tabHeaders {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.tabHeader {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.tabHeader a {
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.tabHeader .active {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid white;
+    cursor: default;
+}

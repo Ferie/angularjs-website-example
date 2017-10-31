@@ -1,0 +1,17 @@
+<div class="content">
+    <h1>First page content</h1>
+
+    <ul class="tabHeaders">
+        <li class="tabHeader">
+            <a ui-sref="firstTab({foo: 'fooValue'})" ui-sref-active="active">first tab header</a>
+        </li>
+        <li class="tabHeader">
+            <a ui-sref="secondTab({bar: ['arrayValue1', 'arrayValue2']})" ui-sref-active="active">second tab header</a>
+        </li>
+        <li class="tabHeader">
+            <a ui-sref="thirdTab({bar: ['arrayValue1', 'arrayValue2']})" ui-sref-active="active">third tab header</a>
+        </li>
+    </ul>
+
+    <div ui-view="tab"></div>
+</div>
