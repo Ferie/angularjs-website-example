@@ -1,6 +1,7 @@
 angular.module('routingExample', ['ui.router']);
 
 
+
 angular.module('routingExample').config(config);
 
 function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, $locationProvider) {
@@ -14,12 +15,15 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             abstract: true,
             views: {
                 header: {
-                    templateUrl: 'header-not-authenticated.html'
+                    templateUrl: 'views/header-not-authenticated.html'
                 },
                 sidebar: {
-                    templateUrl: 'sidebar-not-authenticated.html'
+                    templateUrl: 'views/sidebar-not-authenticated.html'
                 },
-                content: {}
+                content: {},
+                footer: {
+                    templateUrl: 'views/footer-not-authenticated.html'
+                }
             }
         })
         .state('first-page-content', {
@@ -47,8 +51,8 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content': {
-                    templateUrl: 'first-page-content.html',
-                    controller: 'firstPageCtrl',
+                    templateUrl: 'views/first-page-content.html',
+                    controller: 'FirstPageCtrl',
                     controllerAs: 'vm'
                 }
             }
@@ -61,7 +65,7 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content.tab': {
-                    templateUrl: 'first-tab-content.html'
+                    templateUrl: 'views/first-tab-content.html'
                 }
             }
         })
@@ -72,7 +76,7 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content.tab': {
-                    templateUrl: 'second-tab-content.html'
+                    templateUrl: 'views/second-tab-content.html'
                 }
             }
         })
@@ -83,7 +87,7 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content.tab': {
-                    templateUrl: 'third-tab-content.html'
+                    templateUrl: 'views/third-tab-content.html'
                 }
             }
         })
@@ -100,8 +104,8 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content': {
-                    templateUrl: 'second-page-content.html',
-                    controller: 'secondPageCtrl',
+                    templateUrl: 'views/second-page-content.html',
+                    controller: 'SecondPageCtrl',
                     controllerAs: 'vm'
                 }
             }
@@ -119,8 +123,8 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content': {
-                    templateUrl: 'third-page-content.html',
-                    controller: 'thirdPageCtrl',
+                    templateUrl: 'views/third-page-content.html',
+                    controller: 'ThirdPageCtrl',
                     controllerAs: 'vm'
                 }
             }
@@ -133,10 +137,10 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!header': {
-                    templateUrl: 'header.html'
+                    templateUrl: 'views/header.html'
                 },
                 '!content': {
-                    templateUrl: 'login.html',
+                    templateUrl: 'views/login.html',
                     controller: 'LoginController',
                     controllerAs: 'vm'
                 }
@@ -144,19 +148,21 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
         })
         .state('authenticated', {
             url: '/authenticated',
-//            parent: 'login',
             data: {
                 pageTitle: 'Authenticated'
             },
             views: {
                 '!header': {
-                    templateUrl: 'header.html'
+                    templateUrl: 'views/header.html'
                 },
                 '!sidebar': {
-                    templateUrl: 'sidebar.html'
+                    templateUrl: 'views/sidebar.html'
                 },
                 '!content': {
-                    templateUrl: 'authenticated.html'
+                    templateUrl: 'views/authenticated.html'
+                },
+                '!footer': {
+                    templateUrl: 'views/footer.html'
                 }
             }
         })
@@ -171,13 +177,14 @@ function config($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider, 
             },
             views: {
                 '!content.authenticationError': {
-                    templateUrl: 'authentication-error.html'
+                    templateUrl: 'views/authentication-error.html'
                 }
             }
         });
 
     $locationProvider.html5Mode(true);
 }
+
 
 
 angular.module('routingExample').run(run);
@@ -189,17 +196,14 @@ function run ($rootScope, $state, $stateParams, $transitions) {
 }
 
 
-angular.module('routingExample').controller('headerCtrl', fakeController);
 
-angular.module('routingExample').controller('sidebarCtrl', fakeController);
+angular.module('routingExample').controller('FirstPageCtrl', FakeController);
 
-angular.module('routingExample').controller('firstPageCtrl', fakeController);
+angular.module('routingExample').controller('SecondPageCtrl', FakeController);
 
-angular.module('routingExample').controller('secondPageCtrl', fakeController);
+angular.module('routingExample').controller('ThirdPageCtrl', FakeController);
 
-angular.module('routingExample').controller('thirdPageCtrl', fakeController);
-
-function fakeController ($stateParams) {
+function FakeController ($stateParams) {
     var vm = this;
     vm.message = 'nothing useful';
 
@@ -228,7 +232,7 @@ function LoginController($http, $state, $timeout) {
         $timeout( function(){
             $http({
                 method: 'GET',
-                url: 'auth.json'
+                url: 'scripts/auth.json'
             })
             .then(vidaSuccess, vidaError);
         }, 2000 );

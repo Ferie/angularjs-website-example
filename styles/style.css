@@ -1,14 +1,40 @@
 body {
     font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    background-color: #FF8800;
+    color: #FFF;
+    height: 50px;
+    width: 100%;
 }
 
 a {
     text-decoration: none;
 }
 
+a:hover, a:visited {
+    color: inherit;
+}
+
 .logo,
 .loginSection {
     display: inline-block;
+    vertical-align: middle;
+    height: 100%;
     width: 49.5%;
 }
 
@@ -19,6 +45,7 @@ a {
 .sidebar,
 .container {
     display: inline-block;
+    margin-top: 50px;
     vertical-align: top;
 }
 
@@ -31,11 +58,7 @@ a {
     width: 69.5%;
 }
 
-a {
-    text-decoration: none;
-}
-
-.sidebar .active {
+.active {
     cursor: default;
     font-weight: bold;
 }
@@ -47,7 +70,6 @@ a {
 
 .tabHeader {
     display: inline-block;
-    list-style-type: none;
 }
 
 .tabHeader a {
@@ -61,5 +83,21 @@ a {
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid white;
+    color: #FF8800;
     cursor: default;
+    font-weight: normal;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #000;
+    color: #FFF;
+    width: 100%;
+}
+
+footer div {
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
 }
