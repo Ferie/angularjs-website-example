@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="routingExample">
+    <head>
+        <title ng-bind="$state.current.data.pageTitle"></title>
+        <link rel="stylesheet" href="styles/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+        <script src="scripts/script.js"></script>
+        <script>
+            document.write('<base href="'+ document.location.pathname +'">');
+        </script>
+    </head>
+
+    <body>
+        <div ui-view="header"></div>
+
+        <div ui-view="sidebar" class="sidebar"></div>
+
+        <div class="container">
+            <div class="wrapper">
+                <div ui-view="content"></div>
+            </div>
+        </div>
+
+        <div ui-view="footer"></div>
+    </body>
+</html>
